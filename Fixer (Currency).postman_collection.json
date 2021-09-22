@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "d40f77f1-7d14-4a2a-acb4-b2931c00f657",
+		"name": "Fixer (Currency)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local Server",
+			"item": [
+				{
+					"name": "GetCurrency Date QueryString",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/CurrencyConversion/2020-01-01?base=EUR&Symbol=USD&amount=10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"CurrencyConversion",
+								"2020-01-01"
+							],
+							"query": [
+								{
+									"key": "base",
+									"value": "EUR"
+								},
+								{
+									"key": "Symbol",
+									"value": "USD"
+								},
+								{
+									"key": "amount",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCurrency Current QueryString",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/CurrencyConversion?base=EUR&Symbols=USD&amount=10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"CurrencyConversion"
+							],
+							"query": [
+								{
+									"key": "base",
+									"value": "EUR"
+								},
+								{
+									"key": "Symbols",
+									"value": "USD"
+								},
+								{
+									"key": "amount",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCurrency Rest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/CurrencyConversion/EUR/USD/10",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"CurrencyConversion",
+								"EUR",
+								"USD",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetCurrency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://data.fixer.io/api/latest?access_key={{FixerApiKey}}&base=EUR&Symbols=NOK",
+					"protocol": "http",
+					"host": [
+						"data",
+						"fixer",
+						"io"
+					],
+					"path": [
+						"api",
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{FixerApiKey}}"
+						},
+						{
+							"key": "base",
+							"value": "EUR"
+						},
+						{
+							"key": "Symbols",
+							"value": "NOK"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLatest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://data.fixer.io/api/latest?access_key={{FixerApiKey}}",
+					"protocol": "http",
+					"host": [
+						"data",
+						"fixer",
+						"io"
+					],
+					"path": [
+						"api",
+						"latest"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{FixerApiKey}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCurrencyInfoByDate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://data.fixer.io/api/2020-12-24?access_key={{FixerApiKey}}&base=EUR&Symbols=NOK",
+					"protocol": "http",
+					"host": [
+						"data",
+						"fixer",
+						"io"
+					],
+					"path": [
+						"api",
+						"2020-12-24"
+					],
+					"query": [
+						{
+							"key": "access_key",
+							"value": "{{FixerApiKey}}"
+						},
+						{
+							"key": "base",
+							"value": "EUR"
+						},
+						{
+							"key": "Symbols",
+							"value": "NOK"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
