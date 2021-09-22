@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CurrencyTimedTrigger": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SqlConnectionString": "Server=.;Database=CurrencyDb;Trusted_Connection=True;",
+        "FixerApiKey": "",
+        "FixerBaseUri": "http://data.fixer.io/api/"
+      }
+    }
+  }
+}

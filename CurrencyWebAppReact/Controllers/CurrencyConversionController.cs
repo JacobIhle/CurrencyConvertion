@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using CurrencyWebApi.Services;
+using CurrencyWebAppReact.Services;
 
-namespace CurrencyWebApi.Controllers
+namespace CurrencyWebAppReact.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class CurrencyConversionController : ControllerBase
     {
-
         [HttpGet]
         public async Task<IActionResult> GetCurrent()
         {
@@ -18,7 +21,7 @@ namespace CurrencyWebApi.Controllers
 
             if (string.IsNullOrWhiteSpace(baseCurrency) || string.IsNullOrWhiteSpace(conversionCurrency) ||
                 string.IsNullOrWhiteSpace(amountToConvert))
-                return new BadRequestObjectResult( "One or more data fields missing, please ensure that all required fields are filled out");
+                return new BadRequestObjectResult("One or more data fields missing, please ensure that all required fields are filled out");
 
             var result = await CurrencyConversionService.GetAndConvertCurrencyInformation(baseCurrency, conversionCurrency, amountToConvert);
 

@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CurrencyTimedTrigger": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "FixerApiKey": "",
+        "FixerBaseUri": "http://data.fixer.io/api/"
+      }
+    }
+  }
+}

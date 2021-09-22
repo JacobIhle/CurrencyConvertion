@@ -8,18 +8,19 @@ namespace CurrencyConsoleApplication
 {
     class Program
     {
+        private static readonly string FixerApiKey = Environment.GetEnvironmentVariable("FixerApiKey");
         private const string FixerBaseUri = "http://data.fixer.io/api/";
 
         static async Task Main(string[] args)
         {
             Console.WriteLine("Please select base currency.");
-            string baseCurrency = "EUR"; //Console.ReadLine();
+            string baseCurrency = Console.ReadLine().ToUpper();
 
             Console.WriteLine("Please select currency for convertion.");
-            string conversionCurrency = "USD";//Console.ReadLine();
+            string conversionCurrency = Console.ReadLine().ToUpper();
 
             Console.WriteLine("Please select the amount of base currency to convert.");
-            string amountToConvert = "10"; //Console.ReadLine();
+            string amountToConvert = Console.ReadLine();
 
             Console.WriteLine("To get data for a different date. Please enter in the following format 'yyyy-mm-dd'. If current rate wanted, leave blank.");
             string date = Console.ReadLine();
@@ -31,7 +32,7 @@ namespace CurrencyConsoleApplication
                 ? $"latest?base={baseCurrency}&Symbols={conversionCurrency}"
                 : $"{date}?base={baseCurrency}&Symbols={conversionCurrency}";
 
-            var currencyData = await RequestHelpers.SendRequest($"{FixerBaseUri}{queryString}");
+            var currencyData = await RequestHelpers.SendRequest($"{FixerBaseUri}{queryString}", FixerApiKey);
             var currencyDataDto = JsonConvert.DeserializeObject<CurrencyResponseDTO>(currencyData);
 
             var conversionRate = Convert.ToDecimal(currencyDataDto.rates.GetType().GetProperty(conversionCurrency).GetValue(currencyDataDto.rates, null));

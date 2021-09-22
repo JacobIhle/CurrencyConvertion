@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CurrencyConsoleApplication.Helpers
+namespace CurrencyCommon.Helpers
 {
     public class RequestHelpers
     {
-        private static readonly string FixerApiKey = Environment.GetEnvironmentVariable("FixerApiKey");
-
-
-        public static async Task <string> SendRequest(string uri)
+        public static async Task <string> SendRequest(string uri, string apiKey)
         {
-            var requestUri = $"{uri}&access_key={FixerApiKey}";
+            var requestUri = $"{uri}&access_key={apiKey}";
 
 
             var client = new HttpClient();

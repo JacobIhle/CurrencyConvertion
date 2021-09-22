@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CurrencyConsoleApplication": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "FixerApiKey": ""
+      }
+    }
+  }
+}

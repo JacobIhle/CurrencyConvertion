@@ -1,5 +1,9 @@
+using System;
+using CurrencyWebApi.Repository;
+using CurrencyWebApi.Repository.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +25,12 @@ namespace CurrencyWebApi
         {
             services.AddControllers();
             services.AddSwaggerGen();
+            
+            var dbConnectionString = Configuration.GetConnectionString("SqlConnectionString");
+            services.AddDbContext<CurrencyDbContext>(options => options.UseSqlServer(dbConnectionString));
+
+            services.AddScoped<ICurrencyRepository, SqlCurrencyRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -31,6 +41,7 @@ namespace CurrencyWebApi
                 app.UseDeveloperExceptionPage();
             }
             app.UseSwagger();
+
 
             app.UseSwaggerUI(c =>
             {
